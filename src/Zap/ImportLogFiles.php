@@ -26,45 +26,41 @@ namespace Zap;
 /**
  * This file was automatically generated.
  */
-class ImportLogFiles {
-
-	public function __construct ($zap) {
-		$this->zap = $zap;
-	}
+class ImportLogFiles extends AbstractZapComponent {
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
 	public function ImportZAPLogFromFile($filepath) {
-		return $this->zap->request($this->zap->base . 'importLogFiles/view/ImportZAPLogFromFile/', array('FilePath' => $filepath))->{'ImportZAPLogFromFile'};
+		return $this->zap->request($this->zap->baseApiUrl . 'importLogFiles/view/ImportZAPLogFromFile/', array('FilePath' => $filepath))->{'ImportZAPLogFromFile'};
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
 	public function ImportModSecurityLogFromFile($filepath) {
-		return $this->zap->request($this->zap->base . 'importLogFiles/view/ImportModSecurityLogFromFile/', array('FilePath' => $filepath))->{'ImportModSecurityLogFromFile'};
+		return $this->zap->request($this->zap->baseApiUrl . 'importLogFiles/view/ImportModSecurityLogFromFile/', array('FilePath' => $filepath))->{'ImportModSecurityLogFromFile'};
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
 	public function ImportZAPHttpRequestResponsePair($httprequest, $httpresponse) {
-		return $this->zap->request($this->zap->base . 'importLogFiles/view/ImportZAPHttpRequestResponsePair/', array('HTTPRequest' => $httprequest, 'HTTPResponse' => $httpresponse))->{'ImportZAPHttpRequestResponsePair'};
+		return $this->zap->request($this->zap->baseApiUrl . 'importLogFiles/view/ImportZAPHttpRequestResponsePair/', array('HTTPRequest' => $httprequest, 'HTTPResponse' => $httpresponse))->{'ImportZAPHttpRequestResponsePair'};
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
-	public function PostModSecurityAuditEvent($auditeventstring='', $apikey='') {
-		return $this->zap->request($this->zap->base . 'importLogFiles/action/PostModSecurityAuditEvent/', array('AuditEventString' => $auditeventstring, 'apikey' => $apikey));
+	public function PostModSecurityAuditEvent($auditeventstring='') {
+		return $this->zap->request($this->zap->baseApiUrl . 'importLogFiles/action/PostModSecurityAuditEvent/', array('AuditEventString' => $auditeventstring));
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
-	public function OtherPostModSecurityAuditEvent($auditeventstring, $apikey='') {
-		return $this->zap->requestother($this->zap->baseother . 'importLogFiles/other/OtherPostModSecurityAuditEvent/', array('AuditEventString' => $auditeventstring, 'apikey' => $apikey));
+	public function OtherPostModSecurityAuditEvent($auditeventstring) {
+		return $this->zap->requestother($this->zap->baseOtherUrl . 'importLogFiles/other/OtherPostModSecurityAuditEvent/', array('AuditEventString' => $auditeventstring));
 	}
 
 }

@@ -26,11 +26,7 @@ namespace Zap;
 /**
  * This file was automatically generated.
  */
-class Search {
-
-	public function __construct ($zap) {
-		$this->zap = $zap;
-	}
+class Search extends AbstractZapComponent {
 
 	public function urlsByUrlRegex($regex, $baseurl=NULL, $start=NULL, $count=NULL) {
 		$params = array('regex' => $regex);
@@ -43,7 +39,7 @@ class Search {
 		if ($count !== NULL) {
 			$params['count'] = $count;
 		}
-		$res = $this->zap->request($this->zap->base . 'search/view/urlsByUrlRegex/', $params);
+		$res = $this->zap->request($this->zap->baseApiUrl . 'search/view/urlsByUrlRegex/', $params);
 		return reset($res);
 	}
 
@@ -58,7 +54,7 @@ class Search {
 		if ($count !== NULL) {
 			$params['count'] = $count;
 		}
-		$res = $this->zap->request($this->zap->base . 'search/view/urlsByRequestRegex/', $params);
+		$res = $this->zap->request($this->zap->baseApiUrl . 'search/view/urlsByRequestRegex/', $params);
 		return reset($res);
 	}
 
@@ -73,7 +69,7 @@ class Search {
 		if ($count !== NULL) {
 			$params['count'] = $count;
 		}
-		$res = $this->zap->request($this->zap->base . 'search/view/urlsByResponseRegex/', $params);
+		$res = $this->zap->request($this->zap->baseApiUrl . 'search/view/urlsByResponseRegex/', $params);
 		return reset($res);
 	}
 
@@ -88,7 +84,7 @@ class Search {
 		if ($count !== NULL) {
 			$params['count'] = $count;
 		}
-		$res = $this->zap->request($this->zap->base . 'search/view/urlsByHeaderRegex/', $params);
+		$res = $this->zap->request($this->zap->baseApiUrl . 'search/view/urlsByHeaderRegex/', $params);
 		return reset($res);
 	}
 
@@ -103,7 +99,7 @@ class Search {
 		if ($count !== NULL) {
 			$params['count'] = $count;
 		}
-		$res = $this->zap->request($this->zap->base . 'search/view/messagesByUrlRegex/', $params);
+		$res = $this->zap->request($this->zap->baseApiUrl . 'search/view/messagesByUrlRegex/', $params);
 		return reset($res);
 	}
 
@@ -118,7 +114,7 @@ class Search {
 		if ($count !== NULL) {
 			$params['count'] = $count;
 		}
-		$res = $this->zap->request($this->zap->base . 'search/view/messagesByRequestRegex/', $params);
+		$res = $this->zap->request($this->zap->baseApiUrl . 'search/view/messagesByRequestRegex/', $params);
 		return reset($res);
 	}
 
@@ -133,7 +129,7 @@ class Search {
 		if ($count !== NULL) {
 			$params['count'] = $count;
 		}
-		$res = $this->zap->request($this->zap->base . 'search/view/messagesByResponseRegex/', $params);
+		$res = $this->zap->request($this->zap->baseApiUrl . 'search/view/messagesByResponseRegex/', $params);
 		return reset($res);
 	}
 
@@ -148,12 +144,12 @@ class Search {
 		if ($count !== NULL) {
 			$params['count'] = $count;
 		}
-		$res = $this->zap->request($this->zap->base . 'search/view/messagesByHeaderRegex/', $params);
+		$res = $this->zap->request($this->zap->baseApiUrl . 'search/view/messagesByHeaderRegex/', $params);
 		return reset($res);
 	}
 
-	public function harByUrlRegex($regex, $baseurl=NULL, $start=NULL, $count=NULL, $apikey='') {
-		$params = array('regex' => $regex, 'apikey' => $apikey);
+	public function harByUrlRegex($regex, $baseurl=NULL, $start=NULL, $count=NULL) {
+		$params = array('regex' => $regex);
 		if ($baseurl !== NULL) {
 			$params['baseurl'] = $baseurl;
 		}
@@ -163,11 +159,11 @@ class Search {
 		if ($count !== NULL) {
 			$params['count'] = $count;
 		}
-		return $this->zap->requestother($this->zap->base_other . 'search/other/harByUrlRegex/', $params);
+		return $this->zap->requestother($this->zap->baseOtherUrl . 'search/other/harByUrlRegex/', $params);
 	}
 
-	public function harByRequestRegex($regex, $baseurl=NULL, $start=NULL, $count=NULL, $apikey='') {
-		$params = array('regex' => $regex, 'apikey' => $apikey);
+	public function harByRequestRegex($regex, $baseurl=NULL, $start=NULL, $count=NULL) {
+		$params = array('regex' => $regex);
 		if ($baseurl !== NULL) {
 			$params['baseurl'] = $baseurl;
 		}
@@ -177,11 +173,11 @@ class Search {
 		if ($count !== NULL) {
 			$params['count'] = $count;
 		}
-		return $this->zap->requestother($this->zap->base_other . 'search/other/harByRequestRegex/', $params);
+		return $this->zap->requestother($this->zap->baseOtherUrl . 'search/other/harByRequestRegex/', $params);
 	}
 
-	public function harByResponseRegex($regex, $baseurl=NULL, $start=NULL, $count=NULL, $apikey='') {
-		$params = array('regex' => $regex, 'apikey' => $apikey);
+	public function harByResponseRegex($regex, $baseurl=NULL, $start=NULL, $count=NULL) {
+		$params = array('regex' => $regex);
 		if ($baseurl !== NULL) {
 			$params['baseurl'] = $baseurl;
 		}
@@ -191,11 +187,11 @@ class Search {
 		if ($count !== NULL) {
 			$params['count'] = $count;
 		}
-		return $this->zap->requestother($this->zap->base_other . 'search/other/harByResponseRegex/', $params);
+		return $this->zap->requestother($this->zap->baseOtherUrl . 'search/other/harByResponseRegex/', $params);
 	}
 
-	public function harByHeaderRegex($regex, $baseurl=NULL, $start=NULL, $count=NULL, $apikey='') {
-		$params = array('regex' => $regex, 'apikey' => $apikey);
+	public function harByHeaderRegex($regex, $baseurl=NULL, $start=NULL, $count=NULL) {
+		$params = array('regex' => $regex);
 		if ($baseurl !== NULL) {
 			$params['baseurl'] = $baseurl;
 		}
@@ -205,7 +201,7 @@ class Search {
 		if ($count !== NULL) {
 			$params['count'] = $count;
 		}
-		return $this->zap->requestother($this->zap->base_other . 'search/other/harByHeaderRegex/', $params);
+		return $this->zap->requestother($this->zap->baseOtherUrl . 'search/other/harByHeaderRegex/', $params);
 	}
 
 }

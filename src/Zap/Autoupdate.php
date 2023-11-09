@@ -26,17 +26,13 @@ namespace Zap;
 /**
  * This file was automatically generated.
  */
-class Autoupdate {
-
-	public function __construct ($zap) {
-		$this->zap = $zap;
-	}
+class Autoupdate extends AbstractZapComponent {
 
 	/**
 	 * Returns the latest version number
 	 */
 	public function latestVersionNumber() {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/view/latestVersionNumber/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/view/latestVersionNumber/');
 		return reset($res);
 	}
 
@@ -44,120 +40,120 @@ class Autoupdate {
 	 * Returns 'true' if ZAP is on the latest version
 	 */
 	public function isLatestVersion() {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/view/isLatestVersion/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/view/isLatestVersion/');
 		return reset($res);
 	}
 
 	public function optionAddonDirectories() {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/view/optionAddonDirectories/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/view/optionAddonDirectories/');
 		return reset($res);
 	}
 
 	public function optionDayLastChecked() {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/view/optionDayLastChecked/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/view/optionDayLastChecked/');
 		return reset($res);
 	}
 
 	public function optionDayLastInstallWarned() {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/view/optionDayLastInstallWarned/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/view/optionDayLastInstallWarned/');
 		return reset($res);
 	}
 
 	public function optionDayLastUpdateWarned() {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/view/optionDayLastUpdateWarned/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/view/optionDayLastUpdateWarned/');
 		return reset($res);
 	}
 
 	public function optionDownloadDirectory() {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/view/optionDownloadDirectory/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/view/optionDownloadDirectory/');
 		return reset($res);
 	}
 
 	public function optionCheckAddonUpdates() {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/view/optionCheckAddonUpdates/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/view/optionCheckAddonUpdates/');
 		return reset($res);
 	}
 
 	public function optionCheckOnStart() {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/view/optionCheckOnStart/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/view/optionCheckOnStart/');
 		return reset($res);
 	}
 
 	public function optionDownloadNewRelease() {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/view/optionDownloadNewRelease/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/view/optionDownloadNewRelease/');
 		return reset($res);
 	}
 
 	public function optionInstallAddonUpdates() {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/view/optionInstallAddonUpdates/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/view/optionInstallAddonUpdates/');
 		return reset($res);
 	}
 
 	public function optionInstallScannerRules() {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/view/optionInstallScannerRules/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/view/optionInstallScannerRules/');
 		return reset($res);
 	}
 
 	public function optionReportAlphaAddons() {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/view/optionReportAlphaAddons/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/view/optionReportAlphaAddons/');
 		return reset($res);
 	}
 
 	public function optionReportBetaAddons() {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/view/optionReportBetaAddons/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/view/optionReportBetaAddons/');
 		return reset($res);
 	}
 
 	public function optionReportReleaseAddons() {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/view/optionReportReleaseAddons/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/view/optionReportReleaseAddons/');
 		return reset($res);
 	}
 
 	/**
-	 * Downloads the latest release, if any 
+	 * Downloads the latest release, if any
 	 */
 	public function downloadLatestRelease($apikey='') {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/action/downloadLatestRelease/', array('apikey' => $apikey));
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/action/downloadLatestRelease/');
 		return reset($res);
 	}
 
-	public function setOptionCheckAddonUpdates($boolean, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/action/setOptionCheckAddonUpdates/', array('Boolean' => $boolean, 'apikey' => $apikey));
+	public function setOptionCheckAddonUpdates($boolean) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/action/setOptionCheckAddonUpdates/', array('Boolean' => $boolean));
 		return reset($res);
 	}
 
-	public function setOptionCheckOnStart($boolean, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/action/setOptionCheckOnStart/', array('Boolean' => $boolean, 'apikey' => $apikey));
+	public function setOptionCheckOnStart($boolean) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/action/setOptionCheckOnStart/', array('Boolean' => $boolean));
 		return reset($res);
 	}
 
-	public function setOptionDownloadNewRelease($boolean, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/action/setOptionDownloadNewRelease/', array('Boolean' => $boolean, 'apikey' => $apikey));
+	public function setOptionDownloadNewRelease($boolean) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/action/setOptionDownloadNewRelease/', array('Boolean' => $boolean));
 		return reset($res);
 	}
 
-	public function setOptionInstallAddonUpdates($boolean, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/action/setOptionInstallAddonUpdates/', array('Boolean' => $boolean, 'apikey' => $apikey));
+	public function setOptionInstallAddonUpdates($boolean) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/action/setOptionInstallAddonUpdates/', array('Boolean' => $boolean));
 		return reset($res);
 	}
 
-	public function setOptionInstallScannerRules($boolean, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/action/setOptionInstallScannerRules/', array('Boolean' => $boolean, 'apikey' => $apikey));
+	public function setOptionInstallScannerRules($boolean) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/action/setOptionInstallScannerRules/', array('Boolean' => $boolean));
 		return reset($res);
 	}
 
-	public function setOptionReportAlphaAddons($boolean, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/action/setOptionReportAlphaAddons/', array('Boolean' => $boolean, 'apikey' => $apikey));
+	public function setOptionReportAlphaAddons($boolean) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/action/setOptionReportAlphaAddons/', array('Boolean' => $boolean));
 		return reset($res);
 	}
 
-	public function setOptionReportBetaAddons($boolean, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/action/setOptionReportBetaAddons/', array('Boolean' => $boolean, 'apikey' => $apikey));
+	public function setOptionReportBetaAddons($boolean) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/action/setOptionReportBetaAddons/', array('Boolean' => $boolean));
 		return reset($res);
 	}
 
-	public function setOptionReportReleaseAddons($boolean, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'autoupdate/action/setOptionReportReleaseAddons/', array('Boolean' => $boolean, 'apikey' => $apikey));
+	public function setOptionReportReleaseAddons($boolean) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'autoupdate/action/setOptionReportReleaseAddons/', array('Boolean' => $boolean));
 		return reset($res);
 	}
 

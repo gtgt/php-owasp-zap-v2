@@ -26,24 +26,20 @@ namespace Zap;
 /**
  * This file was automatically generated.
  */
-class Brk {
+class Brk extends AbstractZapComponent {
 
-	public function __construct ($zap) {
-		$this->zap = $zap;
-	}
-
-	public function brk($type, $scope, $state, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'break/action/break/', array('type' => $type, 'scope' => $scope, 'state' => $state, 'apikey' => $apikey));
+	public function brk($type, $scope, $state) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'break/action/break/', array('type' => $type, 'scope' => $scope, 'state' => $state));
 		return reset($res);
 	}
 
-	public function addHttpBreakpoint($string, $location, $match, $inverse, $ignorecase, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'break/action/addHttpBreakpoint/', array('string' => $string, 'location' => $location, 'match' => $match, 'inverse' => $inverse, 'ignorecase' => $ignorecase, 'apikey' => $apikey));
+	public function addHttpBreakpoint($string, $location, $match, $inverse, $ignorecase) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'break/action/addHttpBreakpoint/', array('string' => $string, 'location' => $location, 'match' => $match, 'inverse' => $inverse, 'ignorecase' => $ignorecase));
 		return reset($res);
 	}
 
-	public function removeHttpBreakpoint($string, $location, $match, $inverse, $ignorecase, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'break/action/removeHttpBreakpoint/', array('string' => $string, 'location' => $location, 'match' => $match, 'inverse' => $inverse, 'ignorecase' => $ignorecase, 'apikey' => $apikey));
+	public function removeHttpBreakpoint($string, $location, $match, $inverse, $ignorecase) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'break/action/removeHttpBreakpoint/', array('string' => $string, 'location' => $location, 'match' => $match, 'inverse' => $inverse, 'ignorecase' => $ignorecase));
 		return reset($res);
 	}
 

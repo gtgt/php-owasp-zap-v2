@@ -2,18 +2,24 @@
 
 namespace Zap\Test;
 
-class Zapv2Test extends \PHPUnit_Framework_TestCase{
+use PHPUnit\Framework\TestCase;
 
-	public function setUp() {
+class Zapv2Test extends TestCase {
+
+	public function setUp(): void
+    {
 		parent::setUp();
 
 		// Set your ZAP setting
-		$this->proxy = "tcp://localhost:8090";
+		$this->proxy = 'tcp://127.0.0.1:8090';
 		// Set your target web server
-		$this->target_url = "http://localhost:8000";
+		$this->targetUrl = 'http://127.0.0.1:8000';
+
+        $this->apiKey = 'popsp3nasdfesc7h4agk4m24cj';
 	}
 
-    public function tearDown() {
+    public function tearDown(): void
+    {
         \Mockery::close();
     }
 
@@ -21,9 +27,9 @@ class Zapv2Test extends \PHPUnit_Framework_TestCase{
 	 * @test
 	 */
 	public function testVersion() {
-		$zap = new \Zap\Zapv2($this->proxy);
+		$zap = new \Zap\Zapv2($this->proxy, $this->apiKey);
 		$version = @$zap->core->version();
-		$this->assertSame("2.4", substr($version, 0, 3));
+		$this->assertSame(2, (int)$version);
 	}
 
 	/**
@@ -31,8 +37,8 @@ class Zapv2Test extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testStatusCode() {
 		$zap = new \Zap\Zapv2($this->proxy);
-		$res = $zap->statusCode($this->target_url);
-		$this->assertSame("200", $res);
+		$res = $zap->statusCode($this->targetUrl);
+		$this->assertSame('200', $res);
 	}
 
 	/**
@@ -49,11 +55,11 @@ class Zapv2Test extends \PHPUnit_Framework_TestCase{
 	public function testSpiderScanReturnSuccess() {
 		/* Use Mock not to request to a target server */
 		$spider = \Mockery::mock('Zap\Spider');
-		$spider->shouldReceive('scan')->once()->andReturn("1");
+		$spider->shouldReceive('scan')->once()->andReturn('1');
 
 		$zap = new \Zap\Zapv2($this->proxy);
 		$zap->setFieldByName('spider', $spider);
-		$scan_id = $zap->spider->scan($this->target_url);
+		$scan_id = $zap->spider->scan($this->targetUrl);
 
 		$this->assertSame($scan_id, '1');
 	}

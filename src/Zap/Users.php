@@ -26,69 +26,65 @@ namespace Zap;
 /**
  * This file was automatically generated.
  */
-class Users {
-
-	public function __construct ($zap) {
-		$this->zap = $zap;
-	}
+class Users extends AbstractZapComponent {
 
 	public function usersList($contextid=NULL) {
-		$params = array();
+		$params = [];
 		if ($contextid !== NULL) {
 			$params['contextId'] = $contextid;
 		}
-		$res = $this->zap->request($this->zap->base . 'users/view/usersList/', $params);
+		$res = $this->zap->request($this->zap->baseApiUrl . 'users/view/usersList/', $params);
 		return reset($res);
 	}
 
 	public function getUserById($contextid=NULL, $userid=NULL) {
-		$params = array();
+		$params = [];
 		if ($contextid !== NULL) {
 			$params['contextId'] = $contextid;
 		}
 		if ($userid !== NULL) {
 			$params['userId'] = $userid;
 		}
-		$res = $this->zap->request($this->zap->base . 'users/view/getUserById/', $params);
+		$res = $this->zap->request($this->zap->baseApiUrl . 'users/view/getUserById/', $params);
 		return reset($res);
 	}
 
 	public function getAuthenticationCredentialsConfigParams($contextid) {
-		$res = $this->zap->request($this->zap->base . 'users/view/getAuthenticationCredentialsConfigParams/', array('contextId' => $contextid));
+		$res = $this->zap->request($this->zap->baseApiUrl . 'users/view/getAuthenticationCredentialsConfigParams/', array('contextId' => $contextid));
 		return reset($res);
 	}
 
 	public function getAuthenticationCredentials($contextid, $userid) {
-		$res = $this->zap->request($this->zap->base . 'users/view/getAuthenticationCredentials/', array('contextId' => $contextid, 'userId' => $userid));
+		$res = $this->zap->request($this->zap->baseApiUrl . 'users/view/getAuthenticationCredentials/', array('contextId' => $contextid, 'userId' => $userid));
 		return reset($res);
 	}
 
-	public function newUser($contextid, $name, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'users/action/newUser/', array('contextId' => $contextid, 'name' => $name, 'apikey' => $apikey));
+	public function newUser($contextid, $name) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'users/action/newUser/', array('contextId' => $contextid, 'name' => $name));
 		return reset($res);
 	}
 
-	public function removeUser($contextid, $userid, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'users/action/removeUser/', array('contextId' => $contextid, 'userId' => $userid, 'apikey' => $apikey));
+	public function removeUser($contextid, $userid) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'users/action/removeUser/', array('contextId' => $contextid, 'userId' => $userid));
 		return reset($res);
 	}
 
-	public function setUserEnabled($contextid, $userid, $enabled, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'users/action/setUserEnabled/', array('contextId' => $contextid, 'userId' => $userid, 'enabled' => $enabled, 'apikey' => $apikey));
+	public function setUserEnabled($contextid, $userid, $enabled) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'users/action/setUserEnabled/', array('contextId' => $contextid, 'userId' => $userid, 'enabled' => $enabled));
 		return reset($res);
 	}
 
-	public function setUserName($contextid, $userid, $name, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'users/action/setUserName/', array('contextId' => $contextid, 'userId' => $userid, 'name' => $name, 'apikey' => $apikey));
+	public function setUserName($contextid, $userid, $name) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'users/action/setUserName/', array('contextId' => $contextid, 'userId' => $userid, 'name' => $name));
 		return reset($res);
 	}
 
-	public function setAuthenticationCredentials($contextid, $userid, $authcredentialsconfigparams=NULL, $apikey='') {
-		$params = array('contextId' => $contextid, 'userId' => $userid, 'apikey' => $apikey);
+	public function setAuthenticationCredentials($contextid, $userid, $authcredentialsconfigparams=NULL) {
+		$params = array('contextId' => $contextid, 'userId' => $userid);
 		if ($authcredentialsconfigparams !== NULL) {
 			$params['authCredentialsConfigParams'] = $authcredentialsconfigparams;
 		}
-		$res = $this->zap->request($this->zap->base . 'users/action/setAuthenticationCredentials/', $params);
+		$res = $this->zap->request($this->zap->baseApiUrl . 'users/action/setAuthenticationCredentials/', $params);
 		return reset($res);
 	}
 

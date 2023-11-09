@@ -26,17 +26,13 @@ namespace Zap;
 /**
  * This file was automatically generated.
  */
-class ForcedUser {
-
-	public function __construct ($zap) {
-		$this->zap = $zap;
-	}
+class ForcedUser extends AbstractZapComponent {
 
 	/**
 	 * Returns 'true' if 'forced user' mode is enabled, 'false' otherwise
 	 */
 	public function isForcedUserModeEnabled() {
-		$res = $this->zap->request($this->zap->base . 'forcedUser/view/isForcedUserModeEnabled/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'forcedUser/view/isForcedUserModeEnabled/');
 		return reset($res);
 	}
 
@@ -44,23 +40,23 @@ class ForcedUser {
 	 * Gets the user (ID) set as 'forced user' for the given context (ID)
 	 */
 	public function getForcedUser($contextid) {
-		$res = $this->zap->request($this->zap->base . 'forcedUser/view/getForcedUser/', array('contextId' => $contextid));
+		$res = $this->zap->request($this->zap->baseApiUrl . 'forcedUser/view/getForcedUser/', array('contextId' => $contextid));
 		return reset($res);
 	}
 
 	/**
 	 * Sets the user (ID) that should be used in 'forced user' mode for the given context (ID)
 	 */
-	public function setForcedUser($contextid, $userid, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'forcedUser/action/setForcedUser/', array('contextId' => $contextid, 'userId' => $userid, 'apikey' => $apikey));
+	public function setForcedUser($contextid, $userid) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'forcedUser/action/setForcedUser/', array('contextId' => $contextid, 'userId' => $userid));
 		return reset($res);
 	}
 
 	/**
 	 * Sets if 'forced user' mode should be enabled or not
 	 */
-	public function setForcedUserModeEnabled($boolean, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'forcedUser/action/setForcedUserModeEnabled/', array('boolean' => $boolean, 'apikey' => $apikey));
+	public function setForcedUserModeEnabled($boolean) {
+		$res = $this->zap->request($this->zap->baseApiUrl . 'forcedUser/action/setForcedUserModeEnabled/', array('boolean' => $boolean));
 		return reset($res);
 	}
 

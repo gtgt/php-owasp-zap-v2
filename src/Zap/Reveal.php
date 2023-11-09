@@ -26,24 +26,20 @@ namespace Zap;
 /**
  * This file was automatically generated.
  */
-class Reveal {
-
-	public function __construct ($zap) {
-		$this->zap = $zap;
-	}
+class Reveal extends AbstractZapComponent {
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
 	public function reveal() {
-		return $this->zap->request($this->zap->base . 'reveal/view/reveal/')->{'reveal'};
+		return $this->zap->request($this->zap->baseApiUrl . 'reveal/view/reveal/')->{'reveal'};
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
-	public function setReveal($reveal, $apikey='') {
-		return $this->zap->request($this->zap->base . 'reveal/action/setReveal/', array('reveal' => $reveal, 'apikey' => $apikey));
+	public function setReveal($reveal) {
+		return $this->zap->request($this->zap->baseApiUrl . 'reveal/action/setReveal/', array('reveal' => $reveal));
 	}
 
 }

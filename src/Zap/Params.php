@@ -26,21 +26,17 @@ namespace Zap;
 /**
  * This file was automatically generated.
  */
-class Params {
-
-	public function __construct ($zap) {
-		$this->zap = $zap;
-	}
+class Params extends AbstractZapComponent {
 
 	/**
 	 * Shows the parameters for the specified site, or for all sites if the site is not specified
 	 */
 	public function params($site=NULL) {
-		$params = array();
+		$params = [];
 		if ($site !== NULL) {
 			$params['site'] = $site;
 		}
-		$res = $this->zap->request($this->zap->base . 'params/view/params/', $params);
+		$res = $this->zap->request($this->zap->baseApiUrl . 'params/view/params/', $params);
 		return reset($res);
 	}
 

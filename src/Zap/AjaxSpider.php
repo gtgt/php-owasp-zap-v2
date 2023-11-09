@@ -26,45 +26,41 @@ namespace Zap;
 /**
  * This file was automatically generated.
  */
-class AjaxSpider {
-
-	public function __construct ($zap) {
-		$this->zap = $zap;
-	}
+class AjaxSpider extends AbstractZapComponent {
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
 	public function status() {
-		return $this->zap->request($this->zap->base . 'ajaxSpider/view/status/')->{'status'};
+		return $this->zap->request($this->zap->baseApiUrl . 'ajaxSpider/view/status/')->{'status'};
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
 	public function results($start='', $count='') {
-		return $this->zap->request($this->zap->base . 'ajaxSpider/view/results/', array('start' => $start, 'count' => $count))->{'results'};
+		return $this->zap->request($this->zap->baseApiUrl . 'ajaxSpider/view/results/', array('start' => $start, 'count' => $count))->{'results'};
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
 	public function numberOfResults() {
-		return $this->zap->request($this->zap->base . 'ajaxSpider/view/numberOfResults/')->{'numberOfResults'};
+		return $this->zap->request($this->zap->baseApiUrl . 'ajaxSpider/view/numberOfResults/')->{'numberOfResults'};
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
-	public function scan($url, $inscope='', $apikey='') {
-		return $this->zap->request($this->zap->base . 'ajaxSpider/action/scan/', array('url' => $url, 'inScope' => $inscope, 'apikey' => $apikey));
+	public function scan($url, $inscope='') {
+		return $this->zap->request($this->zap->baseApiUrl . 'ajaxSpider/action/scan/', array('url' => $url, 'inScope' => $inscope));
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
 	public function stop($apikey='') {
-		return $this->zap->request($this->zap->base . 'ajaxSpider/action/stop/', array('apikey' => $apikey));
+		return $this->zap->request($this->zap->baseApiUrl . 'ajaxSpider/action/stop/');
 	}
 
 }

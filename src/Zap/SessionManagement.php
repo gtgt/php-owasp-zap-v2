@@ -26,33 +26,29 @@ namespace Zap;
 /**
  * This file was automatically generated.
  */
-class SessionManagement {
-
-	public function __construct ($zap) {
-		$this->zap = $zap;
-	}
+class SessionManagement extends AbstractZapComponent {
 
 	public function getSupportedSessionManagementMethods() {
-		$res = $this->zap->request($this->zap->base . 'sessionManagement/view/getSupportedSessionManagementMethods/');
+		$res = $this->zap->request($this->zap->baseApiUrl . 'sessionManagement/view/getSupportedSessionManagementMethods/');
 		return reset($res);
 	}
 
 	public function getSessionManagementMethodConfigParams($methodname) {
-		$res = $this->zap->request($this->zap->base . 'sessionManagement/view/getSessionManagementMethodConfigParams/', array('methodName' => $methodname));
+		$res = $this->zap->request($this->zap->baseApiUrl . 'sessionManagement/view/getSessionManagementMethodConfigParams/', array('methodName' => $methodname));
 		return reset($res);
 	}
 
 	public function getSessionManagementMethod($contextid) {
-		$res = $this->zap->request($this->zap->base . 'sessionManagement/view/getSessionManagementMethod/', array('contextId' => $contextid));
+		$res = $this->zap->request($this->zap->baseApiUrl . 'sessionManagement/view/getSessionManagementMethod/', array('contextId' => $contextid));
 		return reset($res);
 	}
 
-	public function setSessionManagementMethod($contextid, $methodname, $methodconfigparams=NULL, $apikey='') {
-		$params = array('contextId' => $contextid, 'methodName' => $methodname, 'apikey' => $apikey);
+	public function setSessionManagementMethod($contextid, $methodname, $methodconfigparams=NULL) {
+		$params = array('contextId' => $contextid, 'methodName' => $methodname);
 		if ($methodconfigparams !== NULL) {
 			$params['methodConfigParams'] = $methodconfigparams;
 		}
-		$res = $this->zap->request($this->zap->base . 'sessionManagement/action/setSessionManagementMethod/', $params);
+		$res = $this->zap->request($this->zap->baseApiUrl . 'sessionManagement/action/setSessionManagementMethod/', $params);
 		return reset($res);
 	}
 

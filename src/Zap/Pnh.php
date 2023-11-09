@@ -26,66 +26,62 @@ namespace Zap;
 /**
  * This file was automatically generated.
  */
-class Pnh {
+class Pnh extends AbstractZapComponent {
 
-	public function __construct ($zap) {
-		$this->zap = $zap;
+	/**
+	 * This component is optional and therefore the API will only work if it is installed
+	 */
+	public function monitor($id, $message) {
+		return $this->zap->request($this->zap->baseApiUrl . 'pnh/action/monitor/', array('id' => $id, 'message' => $message));
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
-	public function monitor($id, $message, $apikey='') {
-		return $this->zap->request($this->zap->base . 'pnh/action/monitor/', array('id' => $id, 'message' => $message, 'apikey' => $apikey));
+	public function oracle($id) {
+		return $this->zap->request($this->zap->baseApiUrl . 'pnh/action/oracle/', array('id' => $id));
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
-	public function oracle($id, $apikey='') {
-		return $this->zap->request($this->zap->base . 'pnh/action/oracle/', array('id' => $id, 'apikey' => $apikey));
+	public function startMonitoring($url) {
+		return $this->zap->request($this->zap->baseApiUrl . 'pnh/action/startMonitoring/', array('url' => $url));
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
-	public function startMonitoring($url, $apikey='') {
-		return $this->zap->request($this->zap->base . 'pnh/action/startMonitoring/', array('url' => $url, 'apikey' => $apikey));
-	}
-
-	/**
-	 * This component is optional and therefore the API will only work if it is installed
-	 */
-	public function stopMonitoring($id, $apikey='') {
-		return $this->zap->request($this->zap->base . 'pnh/action/stopMonitoring/', array('id' => $id, 'apikey' => $apikey));
+	public function stopMonitoring($id) {
+		return $this->zap->request($this->zap->baseApiUrl . 'pnh/action/stopMonitoring/', array('id' => $id));
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
 	public function pnh($apikey='') {
-		return $this->zap->requestother($this->zap->baseother . 'pnh/other/pnh/', array('apikey' => $apikey));
+		return $this->zap->requestother($this->zap->baseOtherUrl . 'pnh/other/pnh/');
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
 	public function manifest($apikey='') {
-		return $this->zap->requestother($this->zap->baseother . 'pnh/other/manifest/', array('apikey' => $apikey));
+		return $this->zap->requestother($this->zap->baseOtherUrl . 'pnh/other/manifest/');
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
 	public function service($apikey='') {
-		return $this->zap->requestother($this->zap->baseother . 'pnh/other/service/', array('apikey' => $apikey));
+		return $this->zap->requestother($this->zap->baseOtherUrl . 'pnh/other/service/');
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
 	public function fx_pnhxpi($apikey='') {
-		return $this->zap->requestother($this->zap->baseother . 'pnh/other/fx_pnh.xpi/', array('apikey' => $apikey));
+		return $this->zap->requestother($this->zap->baseOtherUrl . 'pnh/other/fx_pnh.xpi/');
 	}
 
 }

@@ -1,5 +1,5 @@
 {
-    "name": "zaproxy/php-owasp-zap-v2",
+    "name": "policies/php-owasp-zap-v2",
     "description": "PHP client API for OWASP ZAP",
     "keywords": ["ZAP"],
     "license": "Apache-2.0",
@@ -11,11 +11,11 @@
         }
     ],
     "require-dev": {
-        "phpunit/phpunit": "4.3.*",
-        "mockery/mockery": "dev-master@dev"
+        "phpunit/phpunit": "^10.4.2",
+        "mockery/mockery": "@stable"
     },
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=8.2.0"
     },
     "autoload": {
         "psr-4": {

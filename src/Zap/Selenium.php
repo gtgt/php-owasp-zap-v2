@@ -26,52 +26,48 @@ namespace Zap;
 /**
  * This file was automatically generated.
  */
-class Selenium {
-
-	public function __construct ($zap) {
-		$this->zap = $zap;
-	}
+class Selenium extends AbstractZapComponent {
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
 	public function optionChromeDriverPath() {
-		return $this->zap->request($this->zap->base . 'selenium/view/optionChromeDriverPath/')->{'ChromeDriverPath'};
+		return $this->zap->request($this->zap->baseApiUrl . 'selenium/view/optionChromeDriverPath/')->{'ChromeDriverPath'};
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
 	public function optionIeDriverPath() {
-		return $this->zap->request($this->zap->base . 'selenium/view/optionIeDriverPath/')->{'IeDriverPath'};
+		return $this->zap->request($this->zap->baseApiUrl . 'selenium/view/optionIeDriverPath/')->{'IeDriverPath'};
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
 	public function optionPhantomJsBinaryPath() {
-		return $this->zap->request($this->zap->base . 'selenium/view/optionPhantomJsBinaryPath/')->{'PhantomJsBinaryPath'};
+		return $this->zap->request($this->zap->baseApiUrl . 'selenium/view/optionPhantomJsBinaryPath/')->{'PhantomJsBinaryPath'};
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
-	public function setOptionChromeDriverPath($string, $apikey='') {
-		return $this->zap->request($this->zap->base . 'selenium/action/setOptionChromeDriverPath/', array('String' => $string, 'apikey' => $apikey));
+	public function setOptionChromeDriverPath($string) {
+		return $this->zap->request($this->zap->baseApiUrl . 'selenium/action/setOptionChromeDriverPath/', array('String' => $string));
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
-	public function setOptionIeDriverPath($string, $apikey='') {
-		return $this->zap->request($this->zap->base . 'selenium/action/setOptionIeDriverPath/', array('String' => $string, 'apikey' => $apikey));
+	public function setOptionIeDriverPath($string) {
+		return $this->zap->request($this->zap->baseApiUrl . 'selenium/action/setOptionIeDriverPath/', array('String' => $string));
 	}
 
 	/**
 	 * This component is optional and therefore the API will only work if it is installed
 	 */
-	public function setOptionPhantomJsBinaryPath($string, $apikey='') {
-		return $this->zap->request($this->zap->base . 'selenium/action/setOptionPhantomJsBinaryPath/', array('String' => $string, 'apikey' => $apikey));
+	public function setOptionPhantomJsBinaryPath($string) {
+		return $this->zap->request($this->zap->baseApiUrl . 'selenium/action/setOptionPhantomJsBinaryPath/', array('String' => $string));
 	}
 
 }

@@ -26,74 +26,79 @@ namespace Zap;
 /**
  * This file was automatically generated.
  */
-class Pscan {
+class Pscan extends AbstractZapComponent
+{
 
-	public function __construct ($zap) {
-		$this->zap = $zap;
-	}
+    /**
+     * The number of records the passive scanner still has to scan
+     */
+    public function recordsToScan()
+    {
+        $res = $this->zap->request($this->zap->baseApiUrl . 'pscan/view/recordsToScan/');
+        return reset($res);
+    }
 
-	/**
-	 * The number of records the passive scanner still has to scan
-	 */
-	public function recordsToScan() {
-		$res = $this->zap->request($this->zap->base . 'pscan/view/recordsToScan/');
-		return reset($res);
-	}
+    /**
+     * Lists all passive scanners with its ID, name, enabled state and alert threshold.
+     */
+    public function scanners()
+    {
+        $res = $this->zap->request($this->zap->baseApiUrl . 'pscan/view/scanners/');
+        return reset($res);
+    }
 
-	/**
-	 * Lists all passive scanners with its ID, name, enabled state and alert threshold.
-	 */
-	public function scanners() {
-		$res = $this->zap->request($this->zap->base . 'pscan/view/scanners/');
-		return reset($res);
-	}
+    /**
+     * Sets whether or not the passive scanning is enabled
+     */
+    public function setEnabled($enabled)
+    {
+        $res = $this->zap->request($this->zap->baseApiUrl . 'pscan/action/setEnabled/', array('enabled' => $enabled));
+        return reset($res);
+    }
 
-	/**
-	 * Sets whether or not the passive scanning is enabled
-	 */
-	public function setEnabled($enabled, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'pscan/action/setEnabled/', array('enabled' => $enabled, 'apikey' => $apikey));
-		return reset($res);
-	}
+    /**
+     * Enables all passive scanners
+     */
+    public function enableAllScanners()
+    {
+        $res = $this->zap->request($this->zap->baseApiUrl . 'pscan/action/enableAllScanners/');
+        return reset($res);
+    }
 
-	/**
-	 * Enables all passive scanners
-	 */
-	public function enableAllScanners($apikey='') {
-		$res = $this->zap->request($this->zap->base . 'pscan/action/enableAllScanners/', array('apikey' => $apikey));
-		return reset($res);
-	}
+    /**
+     * Disables all passive scanners
+     */
+    public function disableAllScanners()
+    {
+        $res = $this->zap->request($this->zap->baseApiUrl . 'pscan/action/disableAllScanners/');
+        return reset($res);
+    }
 
-	/**
-	 * Disables all passive scanners
-	 */
-	public function disableAllScanners($apikey='') {
-		$res = $this->zap->request($this->zap->base . 'pscan/action/disableAllScanners/', array('apikey' => $apikey));
-		return reset($res);
-	}
+    /**
+     * Enables all passive scanners with the given IDs (comma separated list of IDs)
+     */
+    public function enableScanners($ids)
+    {
+        $res = $this->zap->request($this->zap->baseApiUrl . 'pscan/action/enableScanners/', array('ids' => $ids));
+        return reset($res);
+    }
 
-	/**
-	 * Enables all passive scanners with the given IDs (comma separated list of IDs)
-	 */
-	public function enableScanners($ids, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'pscan/action/enableScanners/', array('ids' => $ids, 'apikey' => $apikey));
-		return reset($res);
-	}
+    /**
+     * Disables all passive scanners with the given IDs (comma separated list of IDs)
+     */
+    public function disableScanners($ids)
+    {
+        $res = $this->zap->request($this->zap->baseApiUrl . 'pscan/action/disableScanners/', array('ids' => $ids));
+        return reset($res);
+    }
 
-	/**
-	 * Disables all passive scanners with the given IDs (comma separated list of IDs)
-	 */
-	public function disableScanners($ids, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'pscan/action/disableScanners/', array('ids' => $ids, 'apikey' => $apikey));
-		return reset($res);
-	}
-
-	/**
-	 * Sets the alert threshold of the passive scanner with the given ID, accepted values for alert threshold: OFF, DEFAULT, LOW, MEDIUM and HIGH
-	 */
-	public function setScannerAlertThreshold($id, $alertthreshold, $apikey='') {
-		$res = $this->zap->request($this->zap->base . 'pscan/action/setScannerAlertThreshold/', array('id' => $id, 'alertThreshold' => $alertthreshold, 'apikey' => $apikey));
-		return reset($res);
-	}
+    /**
+     * Sets the alert threshold of the passive scanner with the given ID, accepted values for alert threshold: OFF, DEFAULT, LOW, MEDIUM and HIGH
+     */
+    public function setScannerAlertThreshold($id, $alertthreshold)
+    {
+        $res = $this->zap->request($this->zap->baseApiUrl . 'pscan/action/setScannerAlertThreshold/', array('id' => $id, 'alertThreshold' => $alertthreshold));
+        return reset($res);
+    }
 
 }
